@@ -17,10 +17,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php-versions: ['7.4', '8.0', '8.1']
+        #php-versions: ['7.4', '8.0', '8.1']
+        php-versions: ['7.4']
         #databases: ['sqlite', 'mysql', 'pgsql']
-        databases: ['sqlite', 'mysql']
-        server-versions: ['stable25', 'master']
+        databases: ['pgsql']
+        #server-versions: ['stable25', 'master']
+        server-versions: ['master']
         #exclude:
         #  - php-versions: 7.3
         #    server-versions: stable24
@@ -29,7 +31,7 @@ jobs:
 
     services:
       postgres:
-        image: postgres
+        image: postgres:14
         ports:
           - 4445:5432/tcp
         env:
